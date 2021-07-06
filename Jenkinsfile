@@ -1,5 +1,9 @@
 pipeline {
-    agent none
+    agent {
+        node {
+            label 'std-webpack-app'
+        }
+    }
     // agent {
     //     docker {
     //         image 'node:12'
