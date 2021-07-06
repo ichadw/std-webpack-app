@@ -37,12 +37,15 @@ module.exports = (env) => {
     'process.env.ENVIRONMENT': JSON.stringify(env),
   };
 
+  const isProd = env === 'production';
+
   const envSetup = { ...defineProperty, ...envKeys };
   console.log(envSetup);
 
   return {
     entry: './src',
     devtool: 'eval',
+    mode: isProd ? 'production' : 'development',
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
